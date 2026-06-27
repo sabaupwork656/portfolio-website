@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: Inter, Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #f8fafc;
+    background: #020617;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.18), transparent 30rem),
+      radial-gradient(circle at 88% 8%, rgba(124, 58, 237, 0.20), transparent 34rem),
+      radial-gradient(circle at 50% 100%, rgba(14, 165, 233, 0.10), transparent 28rem),
+      #020617;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply border border-white/10 bg-white/[0.07] shadow-card backdrop-blur-xl;
+  }
+
+  .glass-strong {
+    @apply border border-white/15 bg-slate-950/45 shadow-soft backdrop-blur-2xl;
+  }
+
+  .animated-gradient-bg {
+    background:
+      radial-gradient(circle at 18% 12%, rgba(56, 189, 248, 0.14), transparent 28rem),
+      radial-gradient(circle at 82% 4%, rgba(192, 132, 252, 0.14), transparent 32rem),
+      radial-gradient(circle at 50% 92%, rgba(34, 197, 94, 0.07), transparent 30rem);
+    animation: gradient-drift 18s ease-in-out infinite alternate;
+  }
+
+  .particle {
+    position: absolute;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: rgba(125, 211, 252, 0.5);
+    box-shadow: 0 0 24px rgba(56, 189, 248, 0.45);
+    opacity: 0.55;
+  }
+
+  .particle-one {
+    left: 8%;
+    top: 22%;
+    animation: particle-float 14s ease-in-out infinite;
+  }
+
+  .particle-two {
+    right: 14%;
+    top: 34%;
+    background: rgba(192, 132, 252, 0.5);
+    box-shadow: 0 0 24px rgba(192, 132, 252, 0.42);
+    animation: particle-float 17s ease-in-out infinite reverse;
+  }
+
+  .particle-three {
+    left: 48%;
+    top: 12%;
+    animation: particle-float-wide 19s ease-in-out infinite;
+  }
+
+  .particle-four {
+    right: 28%;
+    bottom: 14%;
+    width: 0.35rem;
+    height: 0.35rem;
+    background: rgba(34, 197, 94, 0.45);
+    animation: particle-float 16s ease-in-out infinite reverse;
+  }
+
+  .hero-mesh {
+    background-image:
+      radial-gradient(circle at 18% 18%, rgba(59, 130, 246, 0.28), transparent 42%),
+      radial-gradient(circle at 82% 0%, rgba(124, 58, 237, 0.25), transparent 38%),
+      radial-gradient(circle at 52% 82%, rgba(14, 165, 233, 0.16), transparent 40%);
+  }
+
+  .glow-card {
+    @apply relative overflow-hidden;
+  }
+
+  .glow-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms ease;
+    background: radial-gradient(240px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(56, 189, 248, 0.18), rgba(192, 132, 252, 0.10), transparent 70%);
+  }
+
+  .glow-card:hover::before {
+    opacity: 1;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-sky-300 via-indigo-300 to-violet-300 bg-clip-text text-transparent;
+  }
+
+  .float-soft {
+    animation: float-soft 5.5s ease-in-out infinite;
+  }
+
+  .footer-link {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-slate-300 transition hover:-translate-y-0.5 hover:bg-white/15 hover:text-sky-200;
+  }
+
+  .contact-link {
+    @apply inline-flex items-center gap-3 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-semibold text-slate-100 transition hover:-translate-y-0.5 hover:border-sky-300/50 hover:bg-white/10 hover:text-sky-200;
+  }
+
+  .form-label {
+    @apply block text-sm font-semibold text-slate-300;
+  }
+
+  .form-input {
+    @apply mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-medium text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-sky-400 focus:ring-4 focus:ring-sky-400/10;
+  }
+
+  .prose-text {
+    @apply space-y-5 text-base leading-8 text-slate-300;
+  }
+}
+
+@keyframes float-soft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradient-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.92;
+  }
+
+  100% {
+    transform: translate3d(0, -2rem, 0) scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes particle-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(1.5rem, -2.25rem, 0);
+  }
+}
+
+@keyframes particle-float-wide {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(-2rem, 2.5rem, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-gradient-bg,
+  .float-soft,
+  .particle {
+    animation: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .particle-three,
+  .particle-four {
+    display: none;
+  }
+}
